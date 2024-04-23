@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useSlots } from "vue";
 import UlComponent from "./ul-component.vue";
-import { type PropType } from "vue";
 import type { IListItem, IListLevelStyle } from "./typings";
-import { getListLevelStyle } from "./common";
+import { getListLevelStyle } from "./functions";
 import { vAutoAnimate } from "@formkit/auto-animate";
 
 const slots = useSlots();
@@ -25,14 +24,21 @@ const props = defineProps({
   },
 });
 
-const getStyle = (level: number, element: "ul" | "li") =>
+const getStyle = (level: number, element: "ul" | "li" | "div") =>
   getListLevelStyle(props.listLevelStyles, level, element);
 </script>
 
 <template>
-  <li :class="getStyle(props.level, 'li')" v-auto-animate>
-    <!-- inner div allows for toggle ability of each -->
-    <div @click="item.expanded = !item.expanded">
+  <li
+    :class="[getStyle(props.level, 'li'), { __expanded__: item.expanded }]"
+    v-auto-animate
+  >
+    <!-- inner div allows for toggle ability of each link -->
+    <div
+      :class="[getStyle(props.level, 'div'), { __expanded__: item.expanded }]"
+      :data-expanded="item.expanded"
+      @click="item.expanded = !item.expanded"
+    >
       <template v-for="(_, slot) in $slots" :key="slot">
         <template v-if="slot === `level${level}`">
           <slot

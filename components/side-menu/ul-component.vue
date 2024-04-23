@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type PropType, ref } from "vue";
 import type { IListItem, IListLevelStyle } from "./typings";
-import { getListLevelStyle } from "./common";
+import { getListLevelStyle } from "./functions";
 import LiComponent from "./li-component.vue";
 
 const props = defineProps({
