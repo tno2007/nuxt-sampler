@@ -2,6 +2,10 @@
 
 <template>
   <NuxtLayout>
-    <NuxtPage />
+   <UContainer>
+      <NuxtPage />
+    </UContainer>
+
+    <UNotifications />
   </NuxtLayout>
 </template>

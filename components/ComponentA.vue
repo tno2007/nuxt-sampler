@@ -1,0 +1,3 @@
+<template>
+	component A
+</template>
