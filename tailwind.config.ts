@@ -1,5 +1,3 @@
-import theme from "@twind/preset-tailwind/baseTheme";
-
 export default {
   rules: [
     ["animate-delay-0", { animationDelay: "0s" }],
